@@ -2,6 +2,8 @@
 
 Aplicación académica en **Flutter y Dart** basada en las cinco pantallas de la consigna: inicio de sesión, menú, listado, registro de alumnos y perfil.
 
+El diseño usa el logo TE proporcionado para el proyecto (`assets/te_logo.png`) y una paleta cian y blanca basada en ese logo.
+
 ## Funciones
 
 - Inicio de sesión de demostración: correo válido y una contraseña de al menos cuatro caracteres. No hay autenticación real.

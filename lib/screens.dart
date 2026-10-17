@@ -5,7 +5,26 @@ import 'package:provider/provider.dart';
 import 'app_state.dart';
 import 'student.dart';
 
-const purple = Color(0xFF5947C8);
+const brandCyan = Color(0xFF00B2E2);
+const brandDeepCyan = Color(0xFF007D9F);
+const brandPaleCyan = Color(0xFFE5F8FD);
+
+class BrandLogo extends StatelessWidget {
+  const BrandLogo({super.key, this.size = 76});
+
+  final double size;
+
+  @override
+  Widget build(BuildContext context) => SizedBox(
+    width: size,
+    height: size,
+    child: Image.asset(
+      'assets/te_logo.png',
+      fit: BoxFit.contain,
+      semanticLabel: 'Logo TE',
+    ),
+  );
+}
 
 class PageFrame extends StatelessWidget {
   const PageFrame({
@@ -26,8 +45,17 @@ class PageFrame extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
-        backgroundColor: purple,
+        backgroundColor: brandDeepCyan,
         foregroundColor: Colors.white,
+        flexibleSpace: const DecoratedBox(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [brandDeepCyan, Color(0xFF006F90)],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+            ),
+          ),
+        ),
         leading: showBack
             ? IconButton(
                 tooltip: 'Volver al menú',
@@ -85,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(Icons.school_rounded, color: purple, size: 72),
+                      const BrandLogo(size: 105),
                       const SizedBox(height: 14),
                       Text(
                         'Iniciar sesión',
@@ -225,7 +253,7 @@ class _MenuTile extends StatelessWidget {
     required this.icon,
     required this.title,
     required this.onTap,
-    this.color = purple,
+    this.color = brandDeepCyan,
   });
 
   final IconData icon;
@@ -324,10 +352,7 @@ class _StudentTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: const CircleAvatar(
-          backgroundColor: Color(0xFFE9E4FF),
-          child: Icon(Icons.school, color: purple),
-        ),
+        leading: const BrandLogo(size: 42),
         title: Text(
           student.fullName,
           style: const TextStyle(fontWeight: FontWeight.w600),
@@ -415,7 +440,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     controller: _grade,
                     decoration: const InputDecoration(
                       labelText: 'Nota (0 a 20)',
-                      suffixIcon: Icon(Icons.school_outlined),
+                      suffixIcon: Icon(Icons.fact_check_outlined),
                     ),
                     keyboardType: TextInputType.number,
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -507,8 +532,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           const Center(
             child: CircleAvatar(
               radius: 45,
-              backgroundColor: Color(0xFFE9E4FF),
-              child: Icon(Icons.person, size: 55, color: purple),
+              backgroundColor: brandPaleCyan,
+              child: Icon(Icons.person, size: 55, color: brandDeepCyan),
             ),
           ),
           const SizedBox(height: 12),
@@ -541,7 +566,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     padding: const EdgeInsets.symmetric(vertical: 8),
     child: Row(
       children: [
-        Icon(icon, size: 20, color: purple),
+        Icon(icon, size: 20, color: brandDeepCyan),
         const SizedBox(width: 10),
         Text('$label:', style: const TextStyle(fontWeight: FontWeight.w600)),
         const SizedBox(width: 8),

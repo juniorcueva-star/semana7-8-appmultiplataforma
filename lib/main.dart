@@ -24,8 +24,18 @@ class SchoolApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF5947C8)),
-        scaffoldBackgroundColor: const Color(0xFFF7F7FB),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: brandCyan,
+          surface: Colors.white,
+        ).copyWith(primary: brandDeepCyan, onPrimary: Colors.white),
+        scaffoldBackgroundColor: const Color(0xFFF6FCFE),
+        cardTheme: CardThemeData(
+          color: Colors.white,
+          elevation: 1,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+          ),
+        ),
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(9)),
           contentPadding: const EdgeInsets.symmetric(
@@ -35,6 +45,7 @@ class SchoolApp extends StatelessWidget {
         ),
         filledButtonTheme: FilledButtonThemeData(
           style: FilledButton.styleFrom(
+            backgroundColor: brandDeepCyan,
             minimumSize: const Size.fromHeight(48),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
